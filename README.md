@@ -1,1 +1,1 @@
-# Selenium_Swag_Lab
+# SwagLab Test Otomasyonu
