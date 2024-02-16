@@ -71,17 +71,13 @@ class TestSauceDemo:
         wait(ec.visibility_of_element_located((By.ID,"user-name"))).send_keys("standard_user")
         wait(ec.visibility_of_element_located((By.ID,"password"))).send_keys("secret_sauce")
         self.driver.find_element(By.ID,"login-button").click()
-        add_to_cart = wait(ec.visibility_of_element_located((By.XPATH,"//*[@id='add-to-cart-sauce-labs-backpack']")))
-        add_to_cart.click()
-        shopping_cart_link = wait(ec.visibility_of_element_located((By.XPATH,"//*[@id='shopping_cart_container']/a")))
-        shopping_cart_link.click()
+        wait(ec.visibility_of_element_located((By.XPATH,"//*[@id='add-to-cart-sauce-labs-backpack']"))).click()
+        wait(ec.visibility_of_element_located((By.XPATH,"//*[@id='shopping_cart_container']/a"))).click()
         product =wait(ec.visibility_of_element_located((By.XPATH,"//*[@id='item_4_title_link']")))
         message_product= product.text
         print(f"Sepetteki urun adı: {message_product}")
-        continue_shopping = wait(ec.visibility_of_element_located((By.XPATH,"//*[@id='continue-shopping']")))
-        continue_shopping.click()
-        remove = wait(ec.visibility_of_element_located((By.XPATH,"//*//*[@id='remove-sauce-labs-backpack']")))
-        remove.click()  
+        wait(ec.visibility_of_element_located((By.XPATH,"//*[@id='continue-shopping']"))).click()
+        wait(ec.visibility_of_element_located((By.XPATH,"//*//*[@id='remove-sauce-labs-backpack']"))).click()  
         sleep(3)     
 
 
@@ -101,9 +97,8 @@ class TestSauceDemo:
         print(f"Ürün Tanımı: {product_text}")
         testResult = item_text == product_text
         print(f"Ürünler aynı: {testResult}")
-        backButton = self.driver.find_element(By.XPATH,"//*[@id='back-to-products']")
-        backButton.click()
-        sleep(5)
+        self.driver.find_element(By.XPATH,"//*[@id='back-to-products']").click()
+        sleep(3)
 
 
 testClass = TestSauceDemo()
